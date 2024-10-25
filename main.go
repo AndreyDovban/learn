@@ -1,50 +1,57 @@
 package main
 
-import (
-	"log"
-	"net/http"
-	"sync"
-)
+import "log"
 
 func main() {
-	code := make(chan int)
-	var wg sync.WaitGroup
-
-	for i := 0; i < 10; i++ {
-		wg.Add(1)
-		go func() {
-			getHttpCode(code)
-			wg.Done()
-		}()
-	}
-
-	go func() {
-		wg.Wait()
-		close(code)
-	}()
-
-	for res := range code {
-		log.Println(res)
-	}
+	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
+	log.Println(arr)
 }
 
-func getHttpCode(codeCh chan int) {
-	req, err := http.NewRequest("GET", "https://google.com", nil)
-	if err != nil {
-		log.Println(err.Error())
-	}
-	req.Header.Set("User-Agent", "Mozilla/5.0")
+// func sumSlice(){
 
-	resp, err := new(http.Client).Do(req)
-	if err != nil {
-		log.Println(err.Error())
-	}
-	defer resp.Body.Close()
+// }
 
-	codeCh <- resp.StatusCode
-}
+/** БЛОК КОДА с закрытие канала  */
 
-/** Kol c wg.Wait() */
+// func main() {
+// 	code := make(chan int)
+// 	var wg sync.WaitGroup
+
+// 	for i := 0; i < 10; i++ {
+// 		wg.Add(1)
+// 		go func() {
+// 			getHttpCode(code)
+// 			wg.Done()
+// 		}()
+// 	}
+
+// 	go func() {
+// 		wg.Wait()
+// 		close(code)
+// 	}()
+
+// 	for res := range code {
+// 		log.Println(res)
+// 	}
+// }
+
+// func getHttpCode(codeCh chan int) {
+// 	req, err := http.NewRequest("GET", "https://google.com", nil)
+// 	if err != nil {
+// 		log.Println(err.Error())
+// 	}
+// 	req.Header.Set("User-Agent", "Mozilla/5.0")
+
+// 	resp, err := new(http.Client).Do(req)
+// 	if err != nil {
+// 		log.Println(err.Error())
+// 	}
+// 	defer resp.Body.Close()
+
+// 	codeCh <- resp.StatusCode
+// }
+
+/** БЛОК КОДА c wg.Wait() */
 
 // func main() {
 // 	t := time.Now()
