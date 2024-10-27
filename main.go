@@ -1,14 +1,37 @@
 package main
 
-import "log"
+/** БЛОК КОДА с упражнением на сумму среза */
 
-func main() {
-	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}
-	log.Println(arr)
-}
+// func main() {
+// 	arr := []int{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+// 	patrSize := 5
+// 	countGr := len(arr)/patrSize + 1
+// 	ch := make(chan int, countGr)
+// 	totalSum := 0
 
-// func sumSlice(){
+// 	for i := 0; i < countGr; i++ {
+// 		start := i * patrSize
+// 		end := start + patrSize
+// 		if end >= len(arr) {
+// 			end = len(arr)
+// 		}
+// 		go sumSlice(arr[start:end], ch)
+// 	}
 
+// 	for i := 0; i < countGr; i++ {
+// 		totalSum += <-ch
+// 	}
+
+// 	fmt.Println(totalSum)
+
+// }
+
+// func sumSlice(arr []int, ch chan int) {
+// 	res := 0
+// 	for _, v := range arr {
+// 		res += v
+// 	}
+// 	ch <- res
 // }
 
 /** БЛОК КОДА с закрытие канала  */
