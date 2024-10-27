@@ -1,7 +1,10 @@
 package main
 
-import "learn/chanels"
+import (
+	"learn/server"
+)
 
 func main() {
-	chanels.PingLess()
+	server.Server()
+
 }
