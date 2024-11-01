@@ -1,10 +1,12 @@
 package main
 
 import (
-	"learn/server"
+	"github.com/ncruces/zenity"
 )
 
 func main() {
-	server.Server()
-
+	zenity.Notify("There are system updates necessary!",
+		zenity.Title("Warning"),
+		zenity.InfoIcon,
+	)
 }
